@@ -1,6 +1,7 @@
 """
 Misc utils.
 """
+import os
 import asyncio
 import datetime
 import math
@@ -8,6 +9,24 @@ import time
 
 
 def raise_KeyError(msg=''): raise KeyError(msg)
+    
+def get_keys():
+    env = os.environ['ENV']
+    file_path = '/run/secrets/secret'
+    if env == 'local':
+        path = os.path.abspath(os.path.dirname(__file__))
+        file_path = os.path.join(path, "../secrets.json")
+        # print(f"path {path}")
+        # with open(file_path) as f:
+    print(f"file path {file_path}")
+    with open(file_path, 'r') as f:
+        secrets = json.load(f)
+
+        key = secrets['BINANCE_KEY']
+        secret = secrets['BINANCE_SECRET']
+        f.closed
+
+    return key, secret    
 
 
 def time_spent(logger):
