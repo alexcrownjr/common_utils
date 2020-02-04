@@ -5,7 +5,7 @@ __version__ = VERSION
 __versionstr__ = '.'.join(map(str, VERSION))
 
 install_requires = [
-
+    'pyaml'
 ]
 
 dependency_links = [

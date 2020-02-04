@@ -8,9 +8,15 @@ import math
 import time
 import json
 
+import yaml
 
-def raise_KeyError(msg=''): raise KeyError(msg)
-    
+
+def get_settings():
+    settings_file = '/etc/bot/settings.yaml'
+    with open(settings_file, 'r') as f:
+        settings = yaml.safe_load(f.read())
+    return settings
+
 def get_keys():
     env = os.environ['ENV']
     file_path = '/run/secrets/secret'
@@ -25,7 +31,6 @@ def get_keys():
 
         key = secrets['BINANCE_KEY']
         secret = secrets['BINANCE_SECRET']
-        f.closed
 
     return key, secret    
 
