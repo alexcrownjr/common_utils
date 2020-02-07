@@ -128,3 +128,6 @@ def floor_current_time(k=4):
 
 def str_to_datetime(date_time_str):
     return datetime.datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S')
+
+def datetime_to_str(datetime_obj):
+    return datetime_obj.strftime("%d-%b-%Y (%H:%M:%S)")
